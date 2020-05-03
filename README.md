@@ -1,6 +1,9 @@
 # counterSCDF
 
 #payload
+
+
+
 [
  {
   "content": "test",
@@ -14,13 +17,16 @@
   "content": "test",
   "id": "2",
   "metaData": {
-    "Language": "dm"
+    "Language": "de"
   }
 }
 ]
 
 # defination
+
+
 stream create Docs --definition "http | log"
+
 stream create TestCounter  --definition ":Docs.http > Custom_counter --counter.name=lang --counter.tag.expression.lang=#jsonPath(payload,'$.[*].metaData.Language')" --deploy
 
 
